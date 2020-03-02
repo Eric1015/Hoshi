@@ -5,7 +5,6 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { NavigationContainer } from '@react-navigation/native';
 import store from './store';
-import TestComponents from './components/TestComponent';
 
 export default function App() {
 	const persistor = persistStore(store);
@@ -13,7 +12,6 @@ export default function App() {
 		<PersistGate persistor={persistor}>
 			<StoreProvider store={store}>
 				<NavigationContainer>
-					<TestComponents />
 				</NavigationContainer>
 			</StoreProvider>
 		</PersistGate>
