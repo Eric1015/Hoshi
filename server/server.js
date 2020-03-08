@@ -7,11 +7,11 @@ app.use(express.json());
 dotenv.config();
 
 const con = mysql.createConnection({
-	// host: process.env.HOST,
+	host: process.env.DB_HOST,
 	// host: '0.0.0.0',
-	// user: process.env.USERNAME,
-	user: 'root'
-	// password: process.env.PASSWORD,
+	user: process.env.DB_USERNAME,
+	// user: 'root'
+	password: process.env.DB_PASSWORD
 	// password: '12345678'
 });
 
