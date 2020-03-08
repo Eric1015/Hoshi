@@ -1,5 +1,5 @@
 import constants from 'expo-constants';
-import axios from 'axios';
+const axios = require('axios');
 
 export const getWeather = async () => {
 	const cityName = 'Vancouver';
