@@ -19,11 +19,6 @@
 		"assetBundlePatterns": [ "**/*" ],
 		"ios": {
 			"supportsTablet": true
-		},
-		"extra": {
-			"weather": {
-				"apiKey": "43f993812ea04be3a67d81716512d4da"
-			}
 		}
 	}
 }

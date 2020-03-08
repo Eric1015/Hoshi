@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    command: bash -c "npm i && npm start"
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mysql
+    # env_file: .env
+    environment:
+      DATABASE_URL: mysql://root@mysql/hoshi
+      # DB_HOST: $DB_HOST
+      # DB_NAME: $DB_NAME
+      # DB_PASSWORD: $DB_PASSWORD
+      # DB_USERNAME: $DB_USERNAME
+      WEATHER_APIKEY: $WEATHER_APIKEY
+
+  mysql:
+    image: mysql
+    environment:
+      # MYSQL_USER: root
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=hoshi
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
