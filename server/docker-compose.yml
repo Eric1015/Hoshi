@@ -22,8 +22,8 @@ services:
   mysql:
     image: "mysql:5.7"
     environment:
-      - MYSQL_ROOT_PASSWORD="12345678"
-      - MYSQL_DATABASE="hoshi"
-      - MYSQL_USER="hoshi"
-      - MYSQL_PASSWORD="12345678"
-      - MYSQL_host="db"
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=hoshi
+      - MYSQL_USER=hoshi
+      - MYSQL_PASSWORD=12345678
+      - MYSQL_host=db
