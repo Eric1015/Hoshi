@@ -1,19 +1,27 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 
 import i18n from '../localization/i18n';
-import { sendGeolocation } from '../api';
+import { sendGeolocation, sendPushNotificationToken } from '../api';
 
 export default function SettingScreen(props) {
     const handleSendGeolocation = async () => {
-        const { status } = await Permissions.askAsync(Permissions.LOCATION);
-        if (status === 'granted') {
+        const locationRes = await Permissions.askAsync(Permissions.LOCATION);
+        if (locationRes.status === 'granted') {
             const location = await Location.getCurrentPositionAsync({});
             sendGeolocation({
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
+            });
+        }
+        const notificationsRes = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+        if (notificationsRes.status === 'granted') {
+            const token = await Notifications.getExpoPushTokenAsync();
+            sendPushNotificationToken({
+                token,
             })
         }
     }
