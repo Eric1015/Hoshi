@@ -45,6 +45,7 @@ app.get(`/api/${version}/users`, (req, res) => {
 // updates users geolocation
 app.put(`/api/${version}/user/location`, (req, res) => {
 	const { token, longtitude, latitude } = req.body;
+	res.send(req.body);
 	const q = `UPDATE user SET latitude=${latitude}, longtitude=${longtitude} WHERE token="${token}"`;
 	con.query(q, (error, results) => {
 		if (error) return res.send(error);
