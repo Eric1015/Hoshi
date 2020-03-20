@@ -58,7 +58,7 @@ app.get(`/api/${version}/table/new/user`, (req, res) => {
 		token VARCHAR(513) PRIMARY KEY,
 		latitude REAL,
 		longtitude REAL,
-		city VARCHAR(255),
+		city VARCHAR(255)
 	)`;
 	con.query(q, (error, results) => {
 		if (error) return res.send(error);
