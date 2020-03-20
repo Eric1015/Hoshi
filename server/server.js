@@ -34,13 +34,21 @@ app.post(`/api/${version}/user`, (req, res) => {
 	});
 });
 
+app.get('/api/users', (req, res) => {
+	const q = `SELECT * FROM user`;
+	con.query(q, (error, results) => {
+		if (error) return res.send(error);
+		res.send(results);
+	});
+});
+
 app.post(`/api/${version}/user/location`, (req, res) => {
 	const { uuid, location } = req.body;
 });
 
 app.get('/db', (req, res) => {
 	con.query(`SHOW DATABASES`, (error, results) => {
-		if (error) return console.error(error);
+		if (error) return res.send(error);
 		res.status(200).send(results);
 	});
 });
@@ -53,7 +61,7 @@ app.get(`/api/${version}/table/new/user`, (req, res) => {
 		city VARCHAR(255),
 	)`;
 	con.query(q, (error, results) => {
-		if (error) return console.error(error);
-		console.log(results);
+		if (error) return res.send(error);
+		res.send(results);
 	});
 });
