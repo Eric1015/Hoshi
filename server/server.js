@@ -55,7 +55,7 @@ app.get('/db', (req, res) => {
 
 app.get(`/api/${version}/table/new/user`, (req, res) => {
 	const q = `CREATE TABLE IF NOT EXISTS user (
-		token VARCHAR(513) PRIMARY KEY,
+		token VARCHAR(255) PRIMARY KEY,
 		latitude REAL,
 		longtitude REAL,
 		city VARCHAR(255)
