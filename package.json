@@ -1,0 +1,21 @@
+{
+	"name": "Hoshi",
+	"version": "1.0.0",
+	"description": "A mobile app that will give you a notification if it is a great night to watch stars!",
+	"main": "index.js",
+	"scripts": {
+		"build": "cd server && npm i && npm start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Eric1015/Hoshi.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Eric1015/Hoshi/issues"
+	},
+
+	"homepage": "https://github.com/Eric1015/Hoshi#readme"
+}
