@@ -1,8 +1,9 @@
-DROP DATABASE hoshi;
-CREATE DATABASE hoshi;
-USE hoshi;
+-- -- DROP DATABASE hoshi;
+-- CREATE DATABASE IF NOT EXISTS hoshi;
 
-CREATE TABLE user (
+-- USE hoshi;
+
+CREATE TABLE IF NOT EXISTS user (
   token VARCHAR(513) PRIMARY KEY,
   latitude REAL,
   longtitude REAL,

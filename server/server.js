@@ -7,6 +7,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 dotenv.config();
 
+const version = 'v1';
+
 const con = mysql.createConnection({
 	host: process.env.DB_HOST,
 	user: process.env.DB_USERNAME,
@@ -23,29 +25,35 @@ app.get('/', (req, res) => {
 	res.send('Hey WORLD!');
 });
 
-app.post('/api/user', (req, res) => {});
+app.post(`/api/${version}/user`, (req, res) => {
+	const { token } = req.body;
+	const q = `INSERT INTO user (token) VALUES ("${token}")`;
+	con.query(q, (error, result) => {
+		if (error) console.log('User exists');
+		console.log(result);
+	});
+});
 
-app.post('/api/user/location/', (req, res) => {
+app.post(`/api/${version}/user/location`, (req, res) => {
 	const { uuid, location } = req.body;
 });
 
 app.get('/db', (req, res) => {
 	con.query(`SHOW DATABASES`, (error, results) => {
 		if (error) return console.error(error);
-		console.log(results);
+		res.status(200).send(results);
 	});
 });
 
-app.post('/new/table/:tableName', (req, res) => {
-	let { tableName } = req.params;
-	con.query(
-		`CREATE TABLE ${tableName} (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    msg VARCHAR(255) default "Hey hey hey"
-  )`,
-		(error, results, fields) => {
-			if (error) console.error(error);
-			console.log(results);
-		}
-	);
+app.get(`/api/${version}/table/new/user`, (req, res) => {
+	const q = `CREATE TABLE IF NOT EXISTS user (
+		token VARCHAR(513) PRIMARY KEY,
+		latitude REAL,
+		longtitude REAL,
+		city VARCHAR(255),
+	)`;
+	con.query(q, (error, results) => {
+		if (error) return console.error(error);
+		console.log(results);
+	});
 });
