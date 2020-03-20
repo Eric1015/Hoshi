@@ -8,5 +8,6 @@ CREATE TABLE IF NOT EXISTS user (
   latitude REAL,
   longtitude REAL,
   city VARCHAR(255),
+  lastNotified TIMESTAMP DEFAULT NOW(),
+  isAlartSet BIT DEFAULT 1
 )
-

@@ -34,7 +34,7 @@ app.post(`/api/${version}/user`, (req, res) => {
 	});
 });
 
-app.get('/api/users', (req, res) => {
+app.get(`/api/${version}/users`, (req, res) => {
 	const q = `SELECT * FROM user`;
 	con.query(q, (error, results) => {
 		if (error) return res.send(error);
@@ -42,8 +42,14 @@ app.get('/api/users', (req, res) => {
 	});
 });
 
-app.post(`/api/${version}/user/location`, (req, res) => {
-	const { uuid, location } = req.body;
+// updates users geolocation
+app.put(`/api/${version}/user/location`, (req, res) => {
+	const { token, longtitude, latitude } = req.body;
+	const q = `UPDATE user SET latitude="${latitude}", longtitude=${longtitude} WHERE token="${token}"`;
+	con.query(q, (error, results) => {
+		if (error) return res.send(error);
+		res.status(200).send(results);
+	});
 });
 
 app.get('/db', (req, res) => {
