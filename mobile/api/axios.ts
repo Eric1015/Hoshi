@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config';
 
-const version = "v2/";
+const version = "v1/";
 const url = config!.API_URL + "/" + version;
 
 const axiosInstance = axios.create({

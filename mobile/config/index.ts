@@ -2,10 +2,10 @@ import Constants from 'expo-constants';
 
 const ENV = {
     dev: {
-        API_URL: "http://localhost:3000/api",
+        API_URL: "https://hoshi-app.herokuapp.com/api",
     },
     prod: {
-        API_URL: "",
+        API_URL: "https://hoshi-app.herokuapp.com/api",
     },
     staging: {
         API_URL: "",
