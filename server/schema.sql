@@ -4,7 +4,7 @@
 -- USE hoshi;
 
 CREATE TABLE IF NOT EXISTS user (
-  token VARCHAR(513) PRIMARY KEY,
+  token VARCHAR(255) PRIMARY KEY,
   latitude REAL,
   longitude REAL,
   city VARCHAR(255),

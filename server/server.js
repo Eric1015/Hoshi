@@ -65,7 +65,9 @@ app.get(`/api/${version}/table/new/user`, (req, res) => {
 		token VARCHAR(255) PRIMARY KEY,
 		latitude REAL,
 		longitude REAL,
-		city VARCHAR(255)
+		city VARCHAR(255),
+		lastNotified TIMESTAMP DEFAULT NOW(),
+		isAlartSet BIT DEFAULT 1
 	)`;
 	con.query(q, (error, results) => {
 		if (error) return res.send(error);
