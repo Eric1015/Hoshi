@@ -37,26 +37,25 @@ app.post(`/api/${version}/user`, (req, res) => {
 app.get(`/api/${version}/users`, (req, res) => {
 	const q = `SELECT * FROM user`;
 	con.query(q, (error, results) => {
-		if (error) return res.send(error);
-		res.send(results);
+		if (error) return res.json(error);
+		res.json(results);
 	});
 });
 
 // updates users geolocation
 app.put(`/api/${version}/user/location`, (req, res) => {
 	const { token, longitude, latitude } = req.body;
-	res.send(req.body);
 	const q = `UPDATE user SET latitude=${latitude}, longitude=${longitude} WHERE token="${token}"`;
 	con.query(q, (error, results) => {
-		if (error) return res.send(error);
-		res.status(200).send(results);
+		if (error) return res.json(error);
+		res.status(200).json(results);
 	});
 });
 
 app.get('/db', (req, res) => {
 	con.query(`SHOW DATABASES`, (error, results) => {
-		if (error) return res.send(error);
-		res.status(200).send(results);
+		if (error) return res.json(error);
+		res.status(200).json(results);
 	});
 });
 
@@ -70,15 +69,15 @@ app.get(`/api/${version}/table/new/user`, (req, res) => {
 		isAlartSet BIT DEFAULT 1
 	)`;
 	con.query(q, (error, results) => {
-		if (error) return res.send(error);
-		res.send(results);
+		if (error) return res.json(error);
+		res.json(results);
 	});
 });
 
 app.get('/delete/table/user', (req, res) => {
 	const q = `DROP TABLE user`;
 	con.query(q, (error, results) => {
-		if (error) return res.send(error);
-		res.send(results);
+		if (error) return res.json(error);
+		res.json(results);
 	});
 });
