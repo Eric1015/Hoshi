@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
@@ -32,9 +32,8 @@ export default function SettingScreen(props) {
     }, []);
 
     return (
-        <View>
-            <Image source={require('../assets/background.png')} style={{resizeMode: 'contain'}} />
-        </View>
+        <ImageBackground source={require('../assets/background.png')} style={{ width: '100%', height: '100%' }}>
+        </ImageBackground>
     )
 }
 
