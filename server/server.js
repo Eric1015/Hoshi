@@ -44,9 +44,9 @@ app.get(`/api/${version}/users`, (req, res) => {
 
 // updates users geolocation
 app.put(`/api/${version}/user/location`, (req, res) => {
-	const { token, longtitude, latitude } = req.body;
+	const { token, longitude, latitude } = req.body;
 	res.send(req.body);
-	const q = `UPDATE user SET latitude=${latitude}, longtitude=${longtitude} WHERE token="${token}"`;
+	const q = `UPDATE user SET latitude=${latitude}, longitude=${longitude} WHERE token="${token}"`;
 	con.query(q, (error, results) => {
 		if (error) return res.send(error);
 		res.status(200).send(results);
@@ -67,6 +67,14 @@ app.get(`/api/${version}/table/new/user`, (req, res) => {
 		longtitude REAL,
 		city VARCHAR(255)
 	)`;
+	con.query(q, (error, results) => {
+		if (error) return res.send(error);
+		res.send(results);
+	});
+});
+
+app.get('/delete/table/user', (req, res) => {
+	const q = `DROP TABLE user`;
 	con.query(q, (error, results) => {
 		if (error) return res.send(error);
 		res.send(results);
